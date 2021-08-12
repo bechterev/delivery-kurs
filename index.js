@@ -97,7 +97,7 @@ io.on("connection", (socket) => {
     socket.emit('chatHistory',chat);
   });
 
-  socket.on("sendMessage",(data)=>{
+  socket.on("sendMessage",async (data)=>{
       const {receiver, text} = data;
       const author = socket.request.session.passport.user;
       const chat = await Chat.find([author, receiver]);
